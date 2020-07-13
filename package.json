@@ -1,7 +1,7 @@
 {
-  "name": "WebixJetStartBabel7",
+  "name": "transport_frontend",
   "version": "1.0.0",
-  "description": "Building a Webix-jet for Babel 7",
+  "description": "Transport app on Webix-jet",
   "main": "sources/myapp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
