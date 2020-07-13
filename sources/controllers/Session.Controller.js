@@ -1,8 +1,7 @@
 import {tokenStorage} from "../storage/token";
 
-export const Session = {
+export const SessionController = {
     status(){
-        console.log('status')
         const token = tokenStorage.get() ? tokenStorage.get().token : '';
         return new webix.ajax().post(`/server/status`, {token}).then(resolve => {
             const res = resolve.json();
@@ -41,23 +40,3 @@ export const Session = {
         });
     }
 }
-// function status(){
-//     return new Promise((resolve, rej)=>{
-//         resolve({log:true})
-//     });
-// }
-//
-// function login(user, pass){
-//     return webix.ajax().post(`${base_url}/threeraza/admin/login`, {
-//         user, pass
-//     }).then(a =>{
-//         return a.json();
-//     } );
-// }
-//
-// function logout(){
-//     return webix.ajax().post(`${base_url}/threeraza/admin/logout`)
-//         .then(a =>{
-//             return a.json();
-//         } );
-// }

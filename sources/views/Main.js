@@ -1,8 +1,8 @@
-import {JetView} from "webix-jet";
+import AuthController from "../controllers/Auth.Controller";
 import {data} from "models/records";
 import {tokenStorage} from "../storage/token";
 
-export default class DataView extends JetView{
+export default class MainView extends AuthController{
 	config(){
 		let datatable = { view:"datatable", id:"datatable", autoConfig:true, css:"webix_shadow_medium" };
 		let ui = {
@@ -13,10 +13,6 @@ export default class DataView extends JetView{
 			]
 		}
 		return ui;
-	}
-	logout(){
-		tokenStorage.remove();
-		this.app.show('/Auth')
 	}
 	init(view){
 		$$('datatable').parse(data);

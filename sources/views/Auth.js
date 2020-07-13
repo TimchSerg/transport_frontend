@@ -1,7 +1,6 @@
-import {JetView} from "webix-jet";
-import {Session} from "../models/session";
+import AuthController from "../controllers/Auth.Controller";
 
-export default class LoginView extends JetView{
+export default class LoginView extends AuthController{
     config(){
 
         const registration_form = {
@@ -9,10 +8,15 @@ export default class LoginView extends JetView{
             width:400, borderless:false, margin:10,
             rows:[
                 { type:"header", template: 'VD.Транспорт' },
-                { view:"text", name:"phone", label:"Номер телефона:", labelPosition:"top" },
-                { view:"text", name:"fio", label:"ФИО:", labelPosition:"top" },
                 { view:"text", name:"inn", label:"ИНН:", labelPosition:"top" },
-                { view:"text", name:"kpp", label:"КПП:", labelPosition:"top" },
+                { view:"text", name:"organization", label:"Название организации:", labelPosition:"top"},
+                { view:"fieldset", label:"Контактные данные", body:{
+                        rows:[
+                            { view:"text", name:"phone", label:"Номер телефона:", labelPosition:"top" },
+                            { view:"text", name:"fio", label:"ФИО:", labelPosition:"top" },
+                        ]
+                    }},
+                { view:"text", name:"kpp", label:"КПП:", labelPosition:"top", hidden:true },
                 {height: 10},
                 { view:"button", value:"Оставить заявку", click:() => this.registration(), hotkey:"enter" },
                 { view:"button", value:"Аторизоваться", click:() => this.auth_login() },
@@ -47,40 +51,7 @@ export default class LoginView extends JetView{
     }
 
     init(view){
-        // Session.status().then(
-        //     res=>this.app.show('/data'),
-        //     rej=>this.app.show('/Auth')
-        // );
+        this.checkSession();
         view.$view.querySelector("input").focus();
-    }
-    auth_login(){
-        $$('registration_form').hide();
-        $$('login_form').show();
-    }
-    reg_login(){
-        $$('login_form').hide();
-        $$('registration_form').show();
-    }
-    registration(){
-
-    }
-    do_login(){
-        const form = $$("login_form");
-
-        if (form.validate()){
-            const data = form.getValues();
-            Session.login(data.login, data.pass).then(
-                res=>{
-                    this.show('/data');
-                },
-                rej=>{
-                    webix.html.removeCss(form.$view, "invalid_login");
-                    form.elements.pass.focus();
-                    webix.delay(function(){
-                        webix.html.addCss(form.$view, "invalid_login");
-                    });
-                }
-            )
-        }
     }
 }

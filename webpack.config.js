@@ -72,6 +72,10 @@ module.exports = function(env) {
 				"/server":{
 					target: 'http://localhost:4000',
 					pathRewrite: {"^/server" : ""}
+				},
+				"/auth":{
+					target: 'http://localhost:5000',
+					pathRewrite: {"^/auth" : ""}
 				}
 			}
 		}
