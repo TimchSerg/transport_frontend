@@ -12,7 +12,7 @@ export default class EntryView extends EntryController{
                 { view:"text", name:"phone", label:"Контактный номер телефона:", labelPosition:"top" },
                 { view:"text", name:"fio", label:"ФИО:", labelPosition:"top" },
                 { view:"text", name:"inn", label:"ИНН организации:", labelPosition:"top", pattern: { mask:"####-######-##", allow:/[0-9]/g } },
-                { view:"text", name:"organization", label:"Название организации:", labelPosition:"top"},
+                { view:"text", name:"organization", label:"Наименование организации:", labelPosition:"top"},
                 { view:"text", name:"kpp", label:"КПП:", labelPosition:"top", hidden:true },
                 {height: 10},
                 { view:"button", value:"Оставить заявку", click:() => this.registration(), hotkey:"enter" },
