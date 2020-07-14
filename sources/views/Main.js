@@ -1,8 +1,9 @@
-import AuthController from "../controllers/Auth.Controller";
+import EntryController from "../controllers/Entry.Controller";
 import {data} from "models/records";
 import {tokenStorage} from "../storage/token";
+import SessionController from "../controllers/Session.Controller";
 
-export default class MainView extends AuthController{
+export default class MainView extends SessionController{
 	config(){
 		let datatable = { view:"datatable", id:"datatable", autoConfig:true, css:"webix_shadow_medium" };
 		let ui = {
