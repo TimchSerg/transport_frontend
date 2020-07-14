@@ -1,21 +1,16 @@
-Webix Jet Demo App
+Platform Front - End (Transport) 
 ===================
+
+#### fraemwork
+- Webix Jet
 
 ### How to run
 
-- run ```npm install```
-- run ```npm start```
-- open ```http://localhost:8080```
+- Установка модулей ```npm install```
 
 For more details, check https://www.gitbook.com/book/webix/webix-jet/details
 
-### Other commands
-
-#### Run lint
-
-```
-npm run lint
-```
+## Other commands
 
 #### Build production files
 
@@ -23,9 +18,12 @@ npm run lint
 npm run build
 ```
 
-After that you can copy the "codebase" folder to the production server
 
+#### Build files watch
 
-### License
+```
+npm run watch
+```
 
-MIT
+##### exit point recorded in variable _custom_dirname
+
